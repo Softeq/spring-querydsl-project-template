@@ -1,0 +1,1 @@
+# spring-querydsl-project-template
