@@ -1,0 +1,39 @@
+
+class QueryDslPlugin implements Plugin<Project> {
+
+    void apply(Project project) {
+        def generatedSourcesDir = "${project.projectDir}/build/generated/sources/annotationProcessor/java/main"
+        def sourceSets = project.sourceSets
+
+        project.task('generateQueryDSL', type: JavaCompile, group: 'build') {
+            doFirst {
+                project.delete generatedSourcesDir
+                project.file(generatedSourcesDir).mkdirs()
+            }
+
+            classpath = sourceSets.main.compileClasspath
+            setDestinationDir(new File(generatedSourcesDir))
+
+            source = sourceSets.main.java
+            options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
+            options.compilerArgs = [
+                "-proc:only",
+                "-processor", "com.querydsl.apt.jpa.JPAAnnotationProcessor",
+                "-s", generatedSourcesDir
+            ]
+        }
+
+        def compileJavaTask = getTask(project, 'compileJava')
+        def generateQueryDslTask = getTask(project, 'generateQueryDSL')
+        compileJavaTask.dependsOn generateQueryDslTask
+    }
+
+    private static getTask(Project project, String name) {
+        return project
+            .tasks
+            .matching { it.name == name } [0]
+    }
+
+}
+
+apply plugin: QueryDslPlugin

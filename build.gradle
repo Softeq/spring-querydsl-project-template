@@ -1,0 +1,62 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.9.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+apply from: 'gradle/plugins/integrationTest.gradle'
+apply from: 'gradle/plugins/queryDsl.gradle'
+
+group = 'com.softeq'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '8'
+
+def swaggerVersion = '2.8.0'
+def mapstructVersion = '1.3.1.Final'
+def lombokVersion = '1.18.10'
+def junitVersion = '5.3.1'
+def mockitoVersion = '2.23.0'
+def querydslVersion = '4.2.1'
+
+repositories {
+	mavenCentral()
+}
+
+test {
+	useJUnitPlatform()
+}
+
+dependencies {
+	annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+	compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+	annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
+	implementation "org.mapstruct:mapstruct:$mapstructVersion"
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	annotationProcessor(
+		"com.querydsl:querydsl-apt:$querydslVersion:jpa",
+		'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final',
+		'javax.annotation:javax.annotation-api:1.3.2'
+	)
+	implementation "com.querydsl:querydsl-core:$querydslVersion"
+	implementation "com.querydsl:querydsl-jpa:$querydslVersion"
+
+	runtimeOnly 'org.postgresql:postgresql'
+	implementation 'org.liquibase:liquibase-core'
+
+	implementation "io.springfox:springfox-swagger2:$swaggerVersion"
+	implementation "io.springfox:springfox-swagger-ui:$swaggerVersion"
+
+	testImplementation "org.mockito:mockito-core:$mockitoVersion"
+	testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+	testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+	itestImplementation 'org.springframework.boot:spring-boot-starter-test'
+	itestImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+	itestRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+	itestRuntimeOnly 'com.h2database:h2:1.0.60'
+}

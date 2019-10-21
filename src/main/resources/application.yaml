@@ -1,0 +1,15 @@
+spring:
+  output.ansi.enabled: always
+  liquibase.change-log: classpath:/db/changelog/changelog-master.xml
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres_secret
+    url: jdbc:postgresql://localhost:5432/postgres
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        jdbc.lob.non_contextual_creation: true
