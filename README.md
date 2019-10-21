@@ -37,5 +37,28 @@ To run only project dependencies it is require to evaluate
 docker-compose -f ./docker/docker-compose-deps.yaml up
 ```
 
+## Architecture
+
+Application provide next folder structure 
+```
+    src
+        /itest - this folder contains integration tests
+        /main - this folder contains application code
+        /test - this folder contains JUnit 5 tests
+```
+
+Main application contains folder structure that represent 
+([hexagonal architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
+
+```
+    com.softeq.app
+        .domain -- this folder contains domain model of the application and repository interfaces
+        .services -- this filder cointains services of the application
+        .config -- current folder contains application configurations
+        .adapters -- current folder contains external services adapters
+            .api
+            .jpa
+```
+
 ## License
 MIT
