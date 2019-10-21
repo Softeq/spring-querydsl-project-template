@@ -1,3 +1,5 @@
+## Spring QueryDsl Project Template
+
 There are Java project template that integrates next technologies:
 1. Spring Boot 2
 2. Spring Data JPA
