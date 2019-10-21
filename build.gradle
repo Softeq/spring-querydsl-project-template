@@ -32,7 +32,7 @@ test {
 
 jacocoTestReport {
 	sourceSets sourceSets.main
-	executionData = fileTree(buildDir).include("/jacoco/*.exec")
+	executionData(fileTree(buildDir).include("/jacoco/*.exec"))
 	reports {
         xml.enabled = true // coveralls plugin depends on xml format report
         html.enabled = true

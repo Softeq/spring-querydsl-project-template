@@ -1,6 +1,7 @@
 ## Spring QueryDsl Project Template
 
 [![Build Status](https://travis-ci.org/Softeq/spring-querydsl-project-template.svg?branch=master)](https://travis-ci.org/Softeq/spring-querydsl-project-template)
+[![Coverage Status](https://coveralls.io/repos/github/Softeq/spring-querydsl-project-template/badge.svg?branch=master)](https://coveralls.io/github/Softeq/spring-querydsl-project-template?branch=master)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Softeq/spring-querydsl-project-template/master/LICENSE)
 
 There are Java project template that integrates next technologies:
