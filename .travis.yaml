@@ -2,3 +2,6 @@ language: java
 
 jdk:
   - oraclejdk11
+
+install: true
+script: ./gradlew clean build
