@@ -3,5 +3,4 @@ language: java
 jdk:
   - openjdk11
 
-install: true
 script: ./gradlew clean build
