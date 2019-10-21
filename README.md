@@ -48,7 +48,7 @@ Application provide next folder structure
 ```
 
 Main application contains folder structure that represent 
-([hexagonal architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
+( [hexagonal architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software) )
 
 ```
     com.softeq.app
