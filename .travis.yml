@@ -5,7 +5,7 @@ jdk:
   - openjdk11
 
 script:
-  - ./gradlew clean build jacocoTestReport
+  - ./gradlew clean build
 
 after_success:
   - ./gradlew coveralls

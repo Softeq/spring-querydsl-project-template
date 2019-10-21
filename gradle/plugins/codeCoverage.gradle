@@ -3,27 +3,29 @@ apply plugin: 'jacoco'
 class CodeCoveragePlugin implements Plugin<Project> {
 
     void apply(Project project) {
-        def sourceSets = project.sourceSets
+        def execFiles = project.fileTree(project.buildDir).include("/jacoco/*.exec")
 
         project.jacocoTestReport {
-            executionData(project.fileTree(project.buildDir).include("/jacoco/*.exec"))
-            reports {
-                xml.enabled = true // coveralls plugin depends on xml format report
-                html.enabled = true
-            }
+            executionData(execFiles)
+            reports { xml.enabled = true }
         }
 
         project.jacocoTestCoverageVerification {
-            executionData(project.fileTree(project.buildDir).include("/jacoco/*.exec"))
+            executionData(execFiles)
             violationRules { rule { limit {
                 counter = 'LINE'
                 minimum = 0.80
             } } }
         }
 
-        def checkTask = getTask(project, 'check')
-        def jacocoTestCoverageVerificationTask = getTask(project, 'jacocoTestCoverageVerification')
-        checkTask.dependsOn jacocoTestCoverageVerificationTask
+        configureDependsOn(project, 'check', 'jacocoTestReport')
+        configureDependsOn(project, 'check', 'jacocoTestCoverageVerification')
+    }
+
+    private static configureDependsOn(Project project, String dependentTaskName, String sourceTaskName) {
+        def dependentTask = getTask(project, dependentTaskName)
+        def sourceTask = getTask(project, sourceTaskName)
+        dependentTask.dependsOn sourceTask
     }
 
     private static getTask(Project project, String name) {
