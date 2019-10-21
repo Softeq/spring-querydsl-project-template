@@ -1,6 +1,7 @@
-[![Build Status](https://travis-ci.org/Softeq/spring-querydsl-project-template.svg?branch=master)](https://travis-ci.org/Softeq/spring-querydsl-project-template)
-
 ## Spring QueryDsl Project Template
+
+[![Build Status](https://travis-ci.org/Softeq/spring-querydsl-project-template.svg?branch=master)](https://travis-ci.org/Softeq/spring-querydsl-project-template)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Softeq/spring-querydsl-project-template/master/LICENSE)
 
 There are Java project template that integrates next technologies:
 1. [Spring Boot 2](https://spring.io/projects/spring-boot)
