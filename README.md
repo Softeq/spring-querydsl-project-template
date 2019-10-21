@@ -82,7 +82,8 @@ Gradle build support next options:
 1. `-PdisableIntegrationTests` - this option allow to disable integration tests
 2. `-PdisableJacoco` - this options allow to disable code coverage checks
 
-**To build the code successfully it is required > 80% code coverage!**
+**To build the code successfully it is required > 80% code coverage!** 
+This requirement automatically checked during build by JaCoCo plugin.
 
 ## License
 MIT
