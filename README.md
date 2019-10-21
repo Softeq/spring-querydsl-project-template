@@ -74,6 +74,15 @@ There are list of packages:
   - *config* - current folder contains application configurations
   - *adapters* - current folder contains external services adapters
   
+Project contains several base classes:
+1. *AbstractITest* - base integration test that configure context and rollback options for the tests
+2. *AbstractRepositoryImpl* - base class for queryDsl based repositories
+
+Gradle build support next options:
+1. -PdisableIntegrationTests - this option allow to disable integration tests
+2. -PidisableJacoco - this options allow to disable code coverage checks
+
+**To build the code successfully it is required > 80% code coverage!**
 
 ## License
 MIT
