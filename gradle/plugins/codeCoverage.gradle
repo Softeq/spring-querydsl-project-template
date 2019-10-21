@@ -1,0 +1,37 @@
+apply plugin: 'jacoco'
+
+class CodeCoveragePlugin implements Plugin<Project> {
+
+    void apply(Project project) {
+        def sourceSets = project.sourceSets
+
+        project.jacocoTestReport {
+            executionData(project.fileTree(project.buildDir).include("/jacoco/*.exec"))
+            reports {
+                xml.enabled = true // coveralls plugin depends on xml format report
+                html.enabled = true
+            }
+        }
+
+        project.jacocoTestCoverageVerification {
+            executionData(project.fileTree(project.buildDir).include("/jacoco/*.exec"))
+            violationRules { rule { limit {
+                counter = 'LINE'
+                minimum = 0.80
+            } } }
+        }
+
+        def checkTask = getTask(project, 'check')
+        def jacocoTestCoverageVerificationTask = getTask(project, 'jacocoTestCoverageVerification')
+        checkTask.dependsOn jacocoTestCoverageVerificationTask
+    }
+
+    private static getTask(Project project, String name) {
+        return project
+            .tasks
+            .matching { it.name == name } [0]
+    }
+
+}
+
+apply plugin: CodeCoveragePlugin
