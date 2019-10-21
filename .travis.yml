@@ -1,8 +1,8 @@
 language: java
 
 jdk:
-  - oraclejdk8
-  - oraclejdk11
+  - openjdk8
+  - openjdk11
 
 script:
   - ./gradlew clean build
