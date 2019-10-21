@@ -18,8 +18,10 @@ class CodeCoveragePlugin implements Plugin<Project> {
             } } }
         }
 
-        configureDependsOn(project, 'check', 'jacocoTestReport')
-        configureDependsOn(project, 'check', 'jacocoTestCoverageVerification')
+        if (!project.hasProperty('disableJacoco')) {
+            configureDependsOn(project, 'check', 'jacocoTestReport')
+            configureDependsOn(project, 'check', 'jacocoTestCoverageVerification')
+        }
     }
 
     private static configureDependsOn(Project project, String dependentTaskName, String sourceTaskName) {

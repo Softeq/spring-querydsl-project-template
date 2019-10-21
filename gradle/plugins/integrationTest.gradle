@@ -23,7 +23,7 @@ class IntegrationTestPlugin implements Plugin<Project> {
             mustRunAfter 'test'
         }
 
-        if (!project.hasProperty("disableIntegrationTests")) {
+        if (!project.hasProperty('disableIntegrationTests')) {
             def checkTask = getTask(project, 'check')
             def itestTask = getTask(project, 'integrationTest')
             checkTask.dependsOn itestTask

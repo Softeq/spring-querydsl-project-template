@@ -6,6 +6,8 @@ plugins {
 }
 
 apply from: 'gradle/plugins/integrationTest.gradle'
+hasProperty('disableIntegrationTests') && (ext.disableJacoco = true)
+
 apply from: 'gradle/plugins/queryDsl.gradle'
 apply from: 'gradle/plugins/codeCoverage.gradle'
 
