@@ -8,4 +8,4 @@ script:
   - ./gradlew clean build
 
 after_success:
-  - ./gradlew jacocoTestReport coveralls
+  - ./gradlew pitest coveralls
