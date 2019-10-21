@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Softeq/spring-querydsl-project-template.svg?branch=master)](https://travis-ci.org/Softeq/spring-querydsl-project-template)
+
 ## Spring QueryDsl Project Template
 
 There are Java project template that integrates next technologies:
