@@ -1,14 +1,14 @@
 ## Spring QueryDsl Project Template
 
 There are Java project template that integrates next technologies:
-1. Spring Boot 2
-2. Spring Data JPA
-3. QueryDSL JPA
-4. Liquibase
+1. [Spring Boot 2](https://spring.io/projects/spring-boot)
+2. [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+3. [QueryDSL JPA](http://www.querydsl.com/)
+4. [Liquibase](https://www.liquibase.org/)
 5. Postgres
-6. MapStruct
-7. Lombok
-8. JUnit 5 + Integration Tests
+6. [MapStruct](https://mapstruct.org/)
+7. [Lombok](https://projectlombok.org/)
+8. [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) + Integration Tests
 
 ## Build 
 To build the project it is require to use next command
