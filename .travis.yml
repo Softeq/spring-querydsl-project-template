@@ -1,4 +1,5 @@
 language: java
 
 script:
-  ./gradlew clean build
+  - chmod ./gradlew 0777
+  - ./gradlew clean build
