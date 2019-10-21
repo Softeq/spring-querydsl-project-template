@@ -79,8 +79,8 @@ Project contains several base classes:
 2. *AbstractRepositoryImpl* - base class for queryDsl based repositories
 
 Gradle build support next options:
-1. -PdisableIntegrationTests - this option allow to disable integration tests
-2. -PidisableJacoco - this options allow to disable code coverage checks
+1. `-PdisableIntegrationTests` - this option allow to disable integration tests
+2. `-PidisableJacoco` - this options allow to disable code coverage checks
 
 **To build the code successfully it is required > 80% code coverage!**
 
