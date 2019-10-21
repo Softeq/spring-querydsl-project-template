@@ -4,5 +4,4 @@ jdk:
   - oraclejdk11
 
 script:
-  - chmod ./gradlew 0777
-  - ./gradlew clean build
+  ./gradlew clean build
