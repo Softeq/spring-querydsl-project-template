@@ -5,9 +5,6 @@ class IntegrationTestPlugin implements Plugin<Project> {
         def sourceSets = project.sourceSets
 
         sourceSets.create('itest', {
-            java.srcDir 'src/itest/java'
-            resources.srcDir 'src/itest/resources'
-
             compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
             runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
         })
@@ -17,8 +14,10 @@ class IntegrationTestPlugin implements Plugin<Project> {
 
             description = 'Runs the integration tests.'
             group = 'verification'
+
             testClassesDirs = sourceSets.itest.output.classesDirs
             classpath = sourceSets.itest.runtimeClasspath
+
             outputs.upToDateWhen { false }
             mustRunAfter 'test'
         }
