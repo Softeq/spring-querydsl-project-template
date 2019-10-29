@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Softeq/spring-querydsl-project-template.svg?branch=master)](https://travis-ci.org/Softeq/spring-querydsl-project-template)
 [![Coverage Status](https://coveralls.io/repos/github/Softeq/spring-querydsl-project-template/badge.svg?branch=master)](https://coveralls.io/github/Softeq/spring-querydsl-project-template?branch=master)
+[![Gradle Plugin](https://img.shields.io/maven-metadata/v.svg?label=gradle&metadataUrl=https://plugins.gradle.org/m2/com/softeq/gradle/itest/com.softeq.gradle.itest.gradle.plugin/maven-metadata.xml)](https://plugins.gradle.org/plugin/com.softeq.gradle.itest)
 
 There are Java project template that integrates next technologies:
 1. [Spring Boot 2](https://spring.io/projects/spring-boot)
