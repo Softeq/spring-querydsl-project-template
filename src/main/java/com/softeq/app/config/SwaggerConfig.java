@@ -14,20 +14,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-            .apis(RequestHandlerSelectors.basePackage("com.softeq"))
-            .paths(PathSelectors.regex("/.*"))
-            .build().apiInfo(apiEndPointsInfo());
-    }
+  @Bean
+  public Docket api() {
+    return new Docket(DocumentationType.SWAGGER_2).select()
+        .apis(RequestHandlerSelectors.basePackage("com.softeq"))
+        .paths(PathSelectors.regex("/.*"))
+        .build().apiInfo(apiEndPointsInfo());
+  }
 
-    private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder()
-            .title("Spring Boot REST API")
-            .description("Spring Boot REST API")
-            .version("1.0.0")
-            .build();
-    }
+  private ApiInfo apiEndPointsInfo() {
+    return new ApiInfoBuilder()
+        .title("Spring Boot REST API")
+        .description("Spring Boot REST API")
+        .version("1.0.0")
+        .build();
+  }
 
 }

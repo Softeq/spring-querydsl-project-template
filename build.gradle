@@ -1,11 +1,12 @@
 plugins {
+	id 'java'
+	id 'checkstyle'
 	id 'org.springframework.boot' version '2.1.9.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
 	id 'com.github.kt3k.coveralls' version '2.8.4'
+	id 'com.softeq.gradle.itest' version '1.0.2'
 }
 
-apply from: 'gradle/plugins/integrationTest.gradle'
 hasProperty('disableIntegrationTests') && (ext.disableJacoco = true)
 
 apply from: 'gradle/plugins/queryDsl.gradle'
@@ -30,8 +31,17 @@ test {
 	useJUnitPlatform()
 }
 
+integrationTest {
+	useJUnitPlatform()
+}
+
 coveralls {
 	jacocoReportPath 'build/reports/jacoco/test/jacocoTestReport.xml'
+}
+
+checkstyle {
+	toolVersion '8.25'
+	configFile file('gradle/checkstyle/google_checks.xml')
 }
 
 dependencies {

@@ -8,7 +8,7 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface UserCommandMapper {
 
-    @Mapping(target = "id", ignore = true)
-    void merge(@MappingTarget User user, UpdateUserCommand command);
+  @Mapping(target = "id", ignore = true)
+  void merge(@MappingTarget User user, UpdateUserCommand command);
 
 }

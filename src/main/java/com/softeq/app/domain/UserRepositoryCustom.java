@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface UserRepositoryCustom {
 
-    List<User> findByLastName(String lastName);
+  List<User> findByLastName(String lastName);
 
 }
