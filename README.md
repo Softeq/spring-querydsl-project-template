@@ -17,7 +17,7 @@ There are Java project template that integrates next technologies:
 To build the project it is require to use next command
 
 ```bash
-gradlew clean assemble
+gradlew clean build
 ```
 
 To build docker image it will require to use
