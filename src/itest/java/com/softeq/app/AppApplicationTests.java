@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 public class AppApplicationTests extends AbstractITest {
 
-  @Test
-  void contextLoads() {
-  }
+    @Test
+    void contextLoads() {
+    }
 
 }

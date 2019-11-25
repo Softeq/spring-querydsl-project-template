@@ -41,7 +41,7 @@ coveralls {
 
 checkstyle {
 	toolVersion '8.25'
-	configFile file('gradle/checkstyle/google_checks.xml')
+	configFile file('gradle/checkstyle/oracle_checks.xml')
 }
 
 dependencies {

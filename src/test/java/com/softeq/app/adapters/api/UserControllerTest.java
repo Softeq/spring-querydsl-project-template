@@ -13,8 +13,10 @@ import com.softeq.app.domain.User;
 import com.softeq.app.domain.UserRepository;
 import com.softeq.app.services.UserService;
 import com.softeq.app.services.commands.UpdateUserCommand;
+
 import java.util.List;
 import java.util.Optional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,106 +27,106 @@ import org.springframework.http.ResponseEntity;
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
 
-  private UserController controller;
+    private UserController controller;
 
-  @Mock
-  private UserRepository repository;
+    @Mock
+    private UserRepository repository;
 
-  @Mock
-  private UserService userService;
+    @Mock
+    private UserService userService;
 
-  @BeforeEach
-  void setUp() {
-    controller = new UserController();
-    controller.userRepository = prepareRepo(repository);
-    controller.userService = prepareService(userService);
-  }
+    @BeforeEach
+    void setUp() {
+        controller = new UserController();
+        controller.userRepository = prepareRepo(repository);
+        controller.userService = prepareService(userService);
+    }
 
-  @Test
-  void testFindAll() {
-    List<User> result = controller.findAll();
+    @Test
+    void testFindAll() {
+        List<User> result = controller.findAll();
 
-    assertEquals(1, result.size());
-  }
+        assertEquals(1, result.size());
+    }
 
-  @Test
-  void testFindByLastName() {
-    List<User> result = controller.findByLastName("test");
+    @Test
+    void testFindByLastName() {
+        List<User> result = controller.findByLastName("test");
 
-    assertEquals(1, result.size());
-  }
+        assertEquals(1, result.size());
+    }
 
-  @Test
-  void testCreate() {
-    User curUser = new User();
+    @Test
+    void testCreate() {
+        User curUser = new User();
 
-    controller.create(curUser);
+        controller.create(curUser);
 
-    verify(repository).save(any());
-  }
+        verify(repository).save(any());
+    }
 
-  @Test
-  void testDelete() {
-    controller.delete(1L);
+    @Test
+    void testDelete() {
+        controller.delete(1L);
 
-    verify(repository).deleteById(anyLong());
-  }
+        verify(repository).deleteById(anyLong());
+    }
 
-  @Test
-  void testOnException() {
-    ResponseEntity<?> result = controller.onException();
+    @Test
+    void testOnException() {
+        ResponseEntity<?> result = controller.onException();
 
-    assertEquals(404, result.getStatusCodeValue());
-  }
+        assertEquals(404, result.getStatusCodeValue());
+    }
 
-  @Test
-  void testFindById() {
-    controller.findById(1L);
+    @Test
+    void testFindById() {
+        controller.findById(1L);
 
-    verify(repository).findById(anyLong());
-  }
+        verify(repository).findById(anyLong());
+    }
 
-  @Test
-  void testUpdate() {
-    User result = controller.update(1L, new UpdateUserCommand());
+    @Test
+    void testUpdate() {
+        User result = controller.update(1L, new UpdateUserCommand());
 
-    assertNotNull(result);
-    verify(userService).update(eq(1L), any());
-  }
+        assertNotNull(result);
+        verify(userService).update(eq(1L), any());
+    }
 
-  private UserService prepareService(UserService userService) {
-    lenient()
-        .doReturn(new User())
-        .when(userService)
-        .update(anyLong(), any());
+    private UserService prepareService(UserService service) {
+        lenient()
+            .doReturn(new User())
+            .when(service)
+            .update(anyLong(), any());
 
-    return userService;
-  }
+        return service;
+    }
 
-  private UserRepository prepareRepo(UserRepository repository) {
-    List<User> result = singletonList(new User());
+    private UserRepository prepareRepo(UserRepository repo) {
+        List<User> result = singletonList(new User());
 
-    lenient()
-        .doReturn(result)
-        .when(repository).findAll();
+        lenient()
+            .doReturn(result)
+            .when(repo).findAll();
 
-    lenient()
-        .doReturn(result)
-        .when(repository).findByLastName(any());
+        lenient()
+            .doReturn(result)
+            .when(repo).findByLastName(any());
 
-    lenient()
-        .doReturn(new User())
-        .when(repository).save(any());
+        lenient()
+            .doReturn(new User())
+            .when(repo).save(any());
 
-    lenient()
-        .doNothing()
-        .when(repository).deleteById(anyLong());
+        lenient()
+            .doNothing()
+            .when(repo).deleteById(anyLong());
 
-    lenient()
-        .doReturn(Optional.of(new User()))
-        .when(repository).findById(anyLong());
+        lenient()
+            .doReturn(Optional.of(new User()))
+            .when(repo).findById(anyLong());
 
-    return repository;
-  }
+        return repo;
+    }
 
 }

@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 public class UpdateUserCommand {
 
-  private String firstName;
-  private String lastName;
+    private String firstName;
+    private String lastName;
 }
